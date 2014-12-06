@@ -1,7 +1,7 @@
-My VIMRC and BASHRC files
+My dot files
 ===========================================================
 
-VIMRC
+vimrc
 -----------------------------------------------------------
 * For Vim options refer [here](http://vimdoc.sourceforge.net/htmldoc/options.html)
 * For Vim functions refer [here](http://vim.wikia.com/wiki/Write_your_own_Vim_function)
@@ -10,6 +10,6 @@ VIMRC
 * Vim has a built in tutor -- type "vimtutor" to try
 
 
-BASHRC
+bashrc
 -----------------------------------------------------------
 Coming soon...
