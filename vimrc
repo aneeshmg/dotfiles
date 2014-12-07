@@ -84,9 +84,6 @@ set shiftround
 set modeline
 set modelines=3
 
-" Highlight whitespaces in red
-highlight ExtraWhitespace ctermbg=red guibg=red
-match ExtraWhitespace /\s\+$/
 
 " Use VIM instead of VI
 set nocompatible
@@ -142,6 +139,10 @@ set background=dark
 
 " Make Vim remember cursor location
 source $VIMRUNTIME/vimrc_example.vim
+
+" Highlight whitespaces in red
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
 
 " Uncomment the following line to make show comments in italics
 " highlight Comment cterm=italic
