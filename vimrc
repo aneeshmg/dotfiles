@@ -4,8 +4,6 @@
 """"""""""""""
 """""""""""""""""""""""""""""""
 
-
-
 " --- Set VIM options --- "
 
 " Change title of term
@@ -23,6 +21,7 @@ set shiftwidth=3
 set showtabline=1
 set smarttab
 set expandtab
+:%retab
 
 " Indenting
 set smartindent
@@ -33,7 +32,6 @@ set preserveindent
 
 " Make vi fast
 set ttyfast
-set autoread
 
 " Use Unix "more" in vim
 set more
@@ -48,7 +46,6 @@ set showmatch
 set incsearch                          " Show search matches as you type
 set hlsearch                           " Highlight search
 set matchtime=2                        " Time in tenths of a second to jump
-
 
 " Shows horizontal status bar with command and mode at the bottom
 set showmode                           " Shows V/N/I modes
@@ -66,14 +63,10 @@ set magic
 set scrolloff=7
 set sidescrolloff=4
 
-" Auto save,update and swap options
+" Set to auto read/write when a file is changed from the outside
 set autoread
-set autowrite
-set autowriteall
-set nohidden
-set nobackup
-set noswapfile
-set nowritebackup
+"set autowrite
+"set autowriteall
 
 " Set language
 if version >= 700
@@ -124,8 +117,39 @@ syntax enable
 filetype plugin indent on
 syntax on
 
+" Remove any trailing whitespace that is in the file
+autocmd BufRead,BufWrite * if ! &bin | silent! %s/\s\+$//ge | endif
+
+" Automatically cd into the directory that the file is in
+autocmd BufEnter * execute "chdir ".escape(expand("%:p:h"), ' ')
+
+" Color schemes (Uncomment to select)
+colorscheme desert
+"colorscheme shine
+"colorscheme elflord
+"colorscheme blue
+"colorscheme darkblue
+"colorscheme delek
+"colorscheme koehler
+"colorscheme slate
+"colorscheme morning
+"colorscheme evening
+"colorscheme pablo
+"colorscheme murphy
+"colorscheme torte
+"colorscheme zellner
+set background=dark
+
 " Make Vim remember cursor location
 source $VIMRUNTIME/vimrc_example.vim
+
+" Uncomment the following line to make show comments in italics
+" highlight Comment cterm=italic
+
+" Swap and backup options
+set nobackup
+set noswapfile
+set nowb
 
 
 " --- End of Vim options --- "
@@ -160,6 +184,8 @@ map! <F3> <Esc>:w<CR>a
 " Map Shift+F11 to append CW info to file
 nmap <S-F11> :call SetCopy()<CR>
 
+" Map jj to <esc>
+inoremap jj <Esc>
 
 " --- End of mappings --- "
 
@@ -183,5 +209,4 @@ endfunction
 
 " Include Pathogen plugins
 call pathogen#infect()
-
 
