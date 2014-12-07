@@ -12,4 +12,6 @@ vimrc
 
 bashrc
 -----------------------------------------------------------
-Coming soon...
+* Note: This is a custom bashrc - feel free to use parts of it.
+* Refer [this](http://www.gnu.org/software/bash/manual/bashref.html) for further details on editing
+  this file.
