@@ -15,3 +15,17 @@ bashrc
 * Note: This is a custom bashrc - feel free to use parts of it.
 * Refer [this](http://www.gnu.org/software/bash/manual/bashref.html) for further details on editing
   this file.
+
+### Installation instructions
+* vimrc
+`````
+$ cd ~/ && wget https://raw.githubusercontent.com/aneeshmg/dotfiles/master/vimrc
+$ mv vimrc .vimrc
+`````
+
+* bashrc
+`````
+$ cd ~/ && wget https://raw.githubusercontent.com/aneeshmg/dotfiles/master/bashrc
+$ mv bashrc .bashrc
+`````
+
