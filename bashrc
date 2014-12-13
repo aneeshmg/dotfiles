@@ -10,6 +10,7 @@ if [ -f /etc/bashrc ]; then
 fi
 
 source ~/.git-completion.bash
+# Get the file: https://github.com/git/git/blob/master/contrib/completion/git-completion.bash
 
 # Aliases
 
@@ -109,13 +110,37 @@ fi
 # # display greeting
 echo $greet
 
+## Spell Check function
+# Type `sp someword` to spellcheck it
+sp () {
+    if [ "$(which ispell)" != "" ]; then
+        echo "$*" | ispell -a
+    elif [ "$(which aspell)" != "" ]; then
+        echo "$*" | aspell -a
+    else
+        echo "Could not find ispell or aspell, so install it"
+    fi
+}
 
 # Environment variables setup
 
 PATH=$PATH:$HOME/Developement/android-sdk-linux/tools
 PATH=$PATH:$HOME/Developement/android-sdk-linux/platform-tools
 
-export HISTFILESIZE=
-export HISTSIZE=
-export HISTTIMEFORMAT="%d.%m.%y. %T "
+export HISTCONTROL=ignoreboth
+
+# Ignore `ls`.
+export HISTIGNORE="ls"
+
+# append history instead of overwrite
+shopt -s histappend
+PROMPT_COMMAND="$PROMPT_COMMAND ; history -a"
+
+# give us lots of history
+export HISTSIZE=10000
+export HISTFILESIZE=1000000
+
+# set the timeformat when printing history. also tells bash to keep track of
+# timestamps when it's writing to history
+export HISTTIMEFORMAT="%Y:%m:%d %H:%M:%S  "
 export PATH

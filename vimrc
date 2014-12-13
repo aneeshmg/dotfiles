@@ -15,9 +15,9 @@ set number
 set ruler
 
 " Tab-space related stuff
-set ts=3
-set tabstop=3
-set shiftwidth=3
+set ts=2
+set tabstop=2
+set shiftwidth=2
 set showtabline=1
 set smarttab
 set expandtab
@@ -29,6 +29,11 @@ set textwidth=100
 set autoindent
 set copyindent
 set preserveindent
+augroup vimrc_autocmds
+  autocmd BufEnter * highlight OverLength ctermbg=darkgrey guibg=#592929
+  autocmd BufEnter * match OverLength /\%100v.*/
+augroup END
+
 
 " Make vi fast
 set ttyfast
@@ -97,7 +102,7 @@ set linebreak
 " Hide all buffers
 set hidden
 
-" Wrap based on linebreaks
+" Wrap
 set wrap linebreak
 
 " Window Splitting
@@ -106,6 +111,10 @@ set splitbelow
 
 " Misc
 set nojoinspaces
+"if has('mouse')
+"  set mouse=a                    " use mouse everywhere (when terminal supports it)
+"endif                            " uncomment if required
+"hi CursorLine cterm=NONE ctermbg=200
 
 " File specific syntaxing and indentation
 filetype on
@@ -118,7 +127,7 @@ syntax on
 autocmd BufRead,BufWrite * if ! &bin | silent! %s/\s\+$//ge | endif
 
 " Automatically cd into the directory that the file is in
-autocmd BufEnter * execute "chdir ".escape(expand("%:p:h"), ' ')
+"autocmd BufEnter * execute "chdir ".escape(expand("%:p:h"), ' ')
 
 " Color schemes (Uncomment to select)
 colorscheme desert
@@ -143,6 +152,10 @@ source $VIMRUNTIME/vimrc_example.vim
 " Highlight whitespaces in red
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
+
+" Crazy stuff... use on dummies by dumping following 2 lines in vimrc
+"highlight ColorColumn ctermbg=red ctermfg=blue
+"exec 'set colorcolumn=' . join(range(2,80,3), ',')
 
 " Uncomment the following line to make show comments in italics
 " highlight Comment cterm=italic
@@ -188,6 +201,10 @@ nmap <S-F11> :call SetCopy()<CR>
 " Map jj to <esc>
 inoremap jj <Esc>
 
+" Highlight next match in search
+nnoremap <silent> n   n:call HLNext(0.4)<cr>
+nnoremap <silent> N   N:call HLNext(0.4)<cr>
+
 " --- End of mappings --- "
 
 " -------------------------------------------------------------------------------------------------------
@@ -202,6 +219,27 @@ function! SetCopy()
    call append( 0, copyright )
    call append( 0, newline )
 endfunction
+
+" Function(s) 1) To highlight search text in red
+function! HLNext (blinktime)
+  let [bufnum, lnum, col, off] = getpos('.')
+  let matchlen = strlen(matchstr(strpart(getline('.'),col-1),@/))
+  let target_pat = '\c\%#\%('.@/.'\)'
+  let ring = matchadd('WhiteOnRed', target_pat, 101)
+  redraw
+  exec 'sleep ' . float2nr(a:blinktime * 1000) . 'm'
+  call matchdelete(ring)
+  redraw
+endfunction
+
+" 2) To blink the line containing the match...
+"function! HLNext (blinktime)
+"  set invcursorline
+"  redraw
+"  exec 'sleep ' . float2nr(a:blinktime * 1000) . 'm'
+"  set invcursorline
+"  redraw
+"endfunction
 
 
 " --- End of functions --- "
