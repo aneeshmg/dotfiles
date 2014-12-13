@@ -9,6 +9,8 @@ if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
 fi
 
+source ~/.git-completion.bash
+
 # Aliases
 
 alias cl='clear;pwd;ls;'                                          # Clears terminal
