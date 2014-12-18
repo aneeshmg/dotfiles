@@ -23,22 +23,23 @@ set smarttab
 set expandtab
 :%retab
 
+
 " Indenting
 set smartindent
 set textwidth=100
 set autoindent
 set copyindent
 set preserveindent
-augroup vimrc_autocmds
-  autocmd BufEnter * highlight OverLength ctermbg=darkgrey guibg=#592929
-  autocmd BufEnter * match OverLength /\%100v.*/
-augroup END
+"augroup vimrc_autocmds
+"  autocmd BufEnter * highlight OverLength ctermbg=darkgrey guibg=#592929
+"  autocmd BufEnter * match OverLength /\%100v.*/
+"augroup END
 
 
 " Make vi fast
 set ttyfast
 
-" Use Unix "more" in vim
+" Use Unix 'more' in vim
 set more
 
 " Highlight the present line
@@ -89,7 +90,6 @@ set shiftround
 set modeline
 set modelines=3
 
-
 " Use VIM instead of VI
 set nocompatible
 
@@ -127,7 +127,7 @@ syntax on
 autocmd BufRead,BufWrite * if ! &bin | silent! %s/\s\+$//ge | endif
 
 " Automatically cd into the directory that the file is in
-"autocmd BufEnter * execute "chdir ".escape(expand("%:p:h"), ' ')
+"autocmd BufEnter * execute \"chdir \".escape(expand("%:p:h"), ' ')
 
 " Color schemes (Uncomment to select)
 colorscheme desert
@@ -149,10 +149,6 @@ set background=dark
 " Make Vim remember cursor location
 source $VIMRUNTIME/vimrc_example.vim
 
-" Highlight whitespaces in red
-highlight ExtraWhitespace ctermbg=red guibg=red
-match ExtraWhitespace /\s\+$/
-
 " Crazy stuff... use on dummies by dumping following 2 lines in vimrc
 "highlight ColorColumn ctermbg=red ctermfg=blue
 "exec 'set colorcolumn=' . join(range(2,80,3), ',')
@@ -164,6 +160,11 @@ match ExtraWhitespace /\s\+$/
 set nobackup
 set noswapfile
 set nowb
+
+" Highlight whitespaces in red
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
+
 
 
 " --- End of Vim options --- "
@@ -248,4 +249,6 @@ endfunction
 
 " Include Pathogen plugins
 call pathogen#infect()
+
+
 
