@@ -1,0 +1,2 @@
+# To solve the no rdoc error while installing jekyll
+gem: --no-document

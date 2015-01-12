@@ -29,3 +29,4 @@ $ cd ~/ && wget https://raw.githubusercontent.com/aneeshmg/dotfiles/master/bashr
 $ mv bashrc .bashrc
 `````
 
+##### Includes gemrc too, feel free to use!

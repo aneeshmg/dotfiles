@@ -93,6 +93,9 @@ alias yget='youtube-dl --format=18'
 alias today='grep -h -d skip `date +%m/%d` /usr/share/calendar/*' # Get todays date info
 alias say="espeak"
 
+alias webdev='cd /var/www/html'
+alias newword='shuf -n 1 gre.txt | cowsay'
+
 
 ###### greeting
 hour=$(date +"%H")
@@ -109,6 +112,10 @@ else # it is good evening till midnight
 fi
 # # display greeting
 echo $greet
+
+# Print out a new word meaning
+# everytime I open terminal
+shuf -n 1 ~/gre.txt | cowsay
 
 ## Spell Check function
 # Type `sp someword` to spellcheck it
