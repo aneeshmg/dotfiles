@@ -130,13 +130,13 @@ autocmd BufRead,BufWrite * if ! &bin | silent! %s/\s\+$//ge | endif
 "autocmd BufEnter * execute \"chdir \".escape(expand("%:p:h"), ' ')
 
 " Color schemes (Uncomment to select)
-colorscheme desert
+"colorscheme desert
 "colorscheme shine
 "colorscheme elflord
 "colorscheme blue
 "colorscheme darkblue
 "colorscheme delek
-"colorscheme koehler
+colorscheme koehler
 "colorscheme slate
 "colorscheme morning
 "colorscheme evening
@@ -144,7 +144,7 @@ colorscheme desert
 "colorscheme murphy
 "colorscheme torte
 "colorscheme zellner
-set background=dark
+"set background=dark
 
 " Make Vim remember cursor location
 source $VIMRUNTIME/vimrc_example.vim
@@ -201,6 +201,9 @@ nmap <S-F11> :call SetCopy()<CR>
 
 " Map jj to <esc>
 inoremap jj <Esc>
+
+" Map F-9 to toggle codefolding (vim-json)
+nnoremap <F9> za
 
 " Highlight next match in search
 nnoremap <silent> n   n:call HLNext(0.4)<cr>

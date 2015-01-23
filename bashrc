@@ -84,7 +84,7 @@ alias memHogsTop='top -l 1 -o rsize | head -20'
 alias memHogsPs='ps wwaxm -o pid,stat,vsize,rss,time,command | head -10'
 alias cpu_hogs='ps wwaxr -o pid,stat,%cpu,time,command | head -10'
 
-alias lullaby='bash ~/.goodnight.sh'
+alias lullaby='bash ~/.myscripts/goodnight.sh'
 
 
 alias conpi='ssh pi@192.168.0.104'                                # RPi Stuff
@@ -99,6 +99,7 @@ alias today='grep -h -d skip `date +%m/%d` /usr/share/calendar/*' # Get todays d
 alias say="espeak"
 
 alias webdev='cd /var/www/html'
+alias dotfiles='cd ~/Developement/dotfiles'
 alias newword='shuf -n 1 gre.txt | cowsay'
 alias cal="echo $((`date +"%m"` + 1)) `date +"%Y"` | xargs cal -3"
 
