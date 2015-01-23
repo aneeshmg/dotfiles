@@ -24,6 +24,7 @@ alias la='ls -a'
 alias sl='ls'
 alias LS='ls'
 alias SL='ls'
+alias lsdirs="ls -l | grep '^d'"
 
 alias pgrep='ps aux | grep'                                       # Search for a process based on RegEx
 alias lgrep='ls -l | grep'                                        # Search for a file after ls
@@ -72,6 +73,8 @@ alias serve='python -m SimpleHTTPServer'
 alias shutdown='sudo shutdown -h now'                             # System related stuff
 alias reboot='sudo reboot'
 alias powerof='sudo shutdown -h now'
+alias suspend="systemctl suspend"
+alias hibernate="systemctl hibernate"
 alias install='sudo apt-get install'
 alias update='sudo apt-get update'
 alias upgrade='sudo apt-get upgrade'
@@ -80,6 +83,8 @@ alias cpu='lscpu'
 alias memHogsTop='top -l 1 -o rsize | head -20'
 alias memHogsPs='ps wwaxm -o pid,stat,vsize,rss,time,command | head -10'
 alias cpu_hogs='ps wwaxr -o pid,stat,%cpu,time,command | head -10'
+
+alias lullaby='bash ~/.goodnight.sh'
 
 
 alias conpi='ssh pi@192.168.0.104'                                # RPi Stuff
@@ -95,6 +100,30 @@ alias say="espeak"
 
 alias webdev='cd /var/www/html'
 alias newword='shuf -n 1 gre.txt | cowsay'
+alias cal="echo $((`date +"%m"` + 1)) `date +"%Y"` | xargs cal -3"
+
+
+# Shell Builtin Settings
+shopt -s autocd                  # No need to type cd anymore
+shopt -s cdspell                 # Fix simple typos when cd'ing
+shopt -s checkwinsize            # Check window size and adjust accordingly
+shopt -s cmdhist                 # Save multiline commands in a single line
+shopt -s histappend              # Append to HISTFILE instead of overwriting it
+shopt -s dotglob                 # Include filenames beginning with '.' during expansion
+shopt -s expand_aliases          # Expand aliases too
+shopt -s nocaseglob              # Case insensitive pattern matching
+shopt -s extglob                 # Extended pathname completion rules
+shopt -s checkjobs               # Check if there are running jobs and refuse to exit
+shopt -s dirspell                # Fix simple typos in directory name expansion
+shopt -s no_empty_cmd_completion # Don't perform completions on empty lines
+shopt -u force_fignore           # We want to files in FIGNORE to appear uf they are only
+                                 # possible completions
+
+# Set Readline Settings
+set show-all-if-ambiguous on
+set completion-ignore-case on
+set show-all-if-unmodified on
+set skip-completed-text on
 
 
 ###### greeting
@@ -129,6 +158,29 @@ sp () {
     fi
 }
 
+## Extract files automatically
+extract () {
+  if [ -f $1 ] ; then
+      case $1 in
+          *.tar.bz2)   tar xvjf $1    ;;
+          *.tar.gz)    tar xvzf $1    ;;
+          *.bz2)       bunzip2 $1     ;;
+          *.rar)       rar x $1       ;;
+          *.gz)        gunzip $1      ;;
+          *.tar)       tar xvf $1     ;;
+          *.tbz2)      tar xvjf $1    ;;
+          *.tgz)       tar xvzf $1    ;;
+          *.zip)       unzip $1       ;;
+          *.Z)         uncompress $1  ;;
+          *.7z)        7z x $1        ;;
+          *)           echo "don't know how to extract '$1'..." ;;
+      esac
+  else
+      echo "'$1' is not a valid file!"
+  fi
+}
+
+
 # Environment variables setup
 
 PATH=$PATH:$HOME/Developement/android-sdk-linux/tools
@@ -150,4 +202,8 @@ export HISTFILESIZE=1000000
 # set the timeformat when printing history. also tells bash to keep track of
 # timestamps when it's writing to history
 export HISTTIMEFORMAT="%Y:%m:%d %H:%M:%S  "
+
+# terminal UI hack
+export PS1='\[\e[36;1m\]\u\[\e[01;30m\]@\[\e[32;1m\]\h:\[\e[01;35m\]\w \$ \[\e[0m\]'
+
 export PATH
