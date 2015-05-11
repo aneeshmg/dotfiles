@@ -205,6 +205,7 @@ export HISTFILESIZE=1000000
 export HISTTIMEFORMAT="%Y:%m:%d %H:%M:%S  "
 
 # terminal UI hack
-export PS1='\[\e[36;1m\]\u\[\e[01;30m\]@\[\e[32;1m\]\h:\[\e[01;35m\]\w \$ \[\e[0m\]'
+#export PS1='\[\e[36;1m\]\u\[\e[01;30m\]@\[\e[32;1m\]\h:\[\e[01;35m\]\w \$ \[\e[0m\]' #some color change
+export PS1="\[$(tput sgr0)\]\\$\[$(tput sgr0)\] \[$(tput sgr0)\]\033[38;5;15m\033[38;5;6m\W\[$(tputsgr0)\]\033[38;5;15m\033[38;5;15m \[$(tput sgr0)\]"
 
 export PATH
