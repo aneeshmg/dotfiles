@@ -145,7 +145,7 @@ echo $greet
 
 # Print out a new word meaning
 # everytime I open terminal
-shuf -n 1 ~/gre.txt | cowsay
+##shuf -n 1 ~/gre.txt | cowsay
 
 ## Spell Check function
 # Type `sp someword` to spellcheck it
@@ -206,6 +206,35 @@ export HISTTIMEFORMAT="%Y:%m:%d %H:%M:%S  "
 
 # terminal UI hack
 #export PS1='\[\e[36;1m\]\u\[\e[01;30m\]@\[\e[32;1m\]\h:\[\e[01;35m\]\w \$ \[\e[0m\]' #some color change
-export PS1="\[$(tput sgr0)\]\\$\[$(tput sgr0)\] \[$(tput sgr0)\]\033[38;5;15m\033[38;5;6m\W\[$(tputsgr0)\]\033[38;5;15m\033[38;5;15m \[$(tput sgr0)\]"
+
+export PS1="\[$(tput sgr0)\]\\$\[$(tput sgr0)\] \[$(tput sgr0)\]\033[38;5;15m\033[38;5;6m\W\[$(tput sgr0)\]\033[38;5;15m\033[38;5;15m \[$(tput sgr0)\]"
+
+
+
+# some other good UIs
+
+#export PS1="$(tput setaf 1)\u$(tput sgr0)$(tput setaf 2)@$(tput sgr0)$(tput setaf 3)\h:$(tput sgr0)"
+
+#export PS1="#\u@\h:\w#~~\d~~\@~\A~\$\n"
+
+#export PS1="$(tput setaf 1)#\u$(tput sgr0)$(tput setaf 2)@$(tput sgr0)$(tput setaf 3)\h:$(tput sgr0)$(tput setaf 2)\w$(tput sgr0)$(tput setaf 2)#$(tput sgr0)$(tput setaf 2)~~\d~~\@~\t~\$\n$(tput sgr0)"
+
+#export PS1="$(tput setaf 1)#\u$(tput setaf 2)@$(tput setaf 3)\h:$(tput setaf 2)\w$(tput setaf 6)#$(tput setaf 5)~~$(tput setaf 6)\d$(tput setaf 5)~~$(tput setaf 6)\@$(tput setaf 5)~$(tput setaf 2)\t$(tput setaf 5)~HIST:\!~CMD:\#\$\n$(tput sgr0)"
+
+#export PS1="\[\033[0;37m\]\342\224\214\342\224\200\$([[ \$? != 0 ]] && echo \"[\[\033[0;31m\]\342\234\227\[\033[0;37m\]]\342\224\200\")[$(if [[ ${EUID} == 0 ]]; then echo '\[\033[0;31m\]\h'; else echo '\[\033[0;33m\]\u\[\033[0;37m\]@\[\033[0;96m\]\h'; fi)\[\033[0;37m\]]\342\224\200[\[\033[0;32m\]\w\[\033[0;37m\]]\n\[\033[0;37m\]\342\224\224\342\224\200\342\224\200\342\225\274 \[\033[0m\]"
+
+#export PS1="\[\e[30;1m\]\[\016\]\[\017\](\[\e[31;1m\]\u@\h\[\e[30;1m\])-(\[\e[31;1m\]\j\[\e[30;1m\])-(\[\e[31;1m\]\@ \d\[\e[30;1m\])->\[\e[30;1m\]\n\[\016\]\[\017\](\[\[\e[32;1m\]\w\[\e[30;1m\])-(\[\e[32;1m\]\$(/bin/ls -1 | /usr/bin/wc -l | /bin/sed 's: ::g') files, \$(/bin/ls -lah | /bin/grep -m 1 total | /bin/sed 's/total //')b\[\e[30;1m\])-> \[\e[0m\]"
+
+#export PS1='\[\e[1;32m\]\u@\H:\[\e[m\] \[\e[1;37m\]\w\[\e[m\]\n\[\e[1;33m\]hist:\! \[\e[0;33m\] \[\e[1;31m\]jobs:\j \$\[\e[m\] '
+
+#export PS1="\n\[\033[35m\]\$(/bin/date)\n\[\033[32m\]\w\n\[\033[1;31m\]\u@\h: \[\033[1;34m\]\$(/usr/bin/tty | /bin/sed -e 's:/dev/::'): \[\033[1;36m\]\$(/bin/ls -1 | /usr/bin/wc -l | /bin/sed 's: ::g') files \[\033[1;33m\]\$(/bin/ls -lah | /bin/grep -m 1 total | /bin/sed 's/total //')b\[\033[0m\] -> \[\033[0m\]"
+
+
+
+
 
 export PATH
+
+
+
+
