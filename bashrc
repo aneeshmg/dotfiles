@@ -59,6 +59,7 @@ alias py='python -f'
 alias pl='perl -f'
 
 alias pingg='ping -c 5 google.com'                                # Network status tweaks
+alias ping8='ping -c 5 8.8.8.8'
 alias google='links google.com'
 alias ppp='ifconfig | grep --color 'RX.by.*\$''                   # Check BW usage
 alias ports='netstat -tulanp'
