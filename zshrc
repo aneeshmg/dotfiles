@@ -93,7 +93,10 @@ export PATH=$HOME/bin:$HOME/bin/intellij-ide/bin:/usr/local/bin:$PATH
 # Example aliases
 alias zshconfig="mate ~/.zshrc"
 alias ohmyzsh="mate ~/.oh-my-zsh"
-alias reload="source ~/.zshrc"
+alias reload="cp ~/dotfiles/zshrc ~/.zshrc;source ~/.zshrc"
+alias zrc='vi ~/dotfiles/zshrc'
+alias cl='clear'
+alias cls='clear;ls;pwd'
 alias sl='ls'
 alias LS='ls'
 alias SL='ls'
