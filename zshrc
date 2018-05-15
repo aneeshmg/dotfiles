@@ -93,8 +93,8 @@ export PATH=$HOME/bin:$HOME/bin/intellij-ide/bin:/usr/local/bin:$PATH
 # Example aliases
 alias zshconfig="mate ~/.zshrc"
 alias ohmyzsh="mate ~/.oh-my-zsh"
-alias reload="cp ~/dotfiles/zshrc ~/.zshrc;source ~/.zshrc"
-alias zrc='vi ~/dotfiles/zshrc'
+alias reload="cp ~/dev/dotfiles/zshrc ~/.zshrc;source ~/.zshrc"
+alias zrc='vi ~/dotfiles/.zshrc'
 alias cl='clear'
 alias cls='clear;ls;pwd'
 alias sl='ls'
@@ -151,4 +151,5 @@ alias today='grep -h -d skip `date +%m/%d` /usr/share/calendar/*' # Get todays d
 alias say="espeak"
 alias cal="echo $((`date +"%m"` + 1)) `date +"%Y"` | xargs cal -3"
 
+alias serve='python -m SimpleHTTPServer'
 
