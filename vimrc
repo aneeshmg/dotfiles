@@ -15,9 +15,9 @@ set number
 set ruler
 
 " Tab-space related stuff
-set ts=2
-set tabstop=2
-set shiftwidth=2
+set ts=4
+set tabstop=4
+set shiftwidth=4
 set showtabline=1
 set smarttab
 set expandtab
