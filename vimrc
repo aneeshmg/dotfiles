@@ -156,10 +156,8 @@ source $VIMRUNTIME/vimrc_example.vim
 " Uncomment the following line to make show comments in italics
 " highlight Comment cterm=italic
 
-" Swap and backup options
-set nobackup
-set noswapfile
-set nowb
+" lightline config
+set laststatus=2
 
 " Highlight whitespaces in red
 highlight ExtraWhitespace ctermbg=red guibg=red
@@ -195,6 +193,11 @@ map! <F4> <Esc>:q!<CR>
 map! <F3> <Esc>:w<CR>a
 map! <F3> <Esc>:w<CR>a
 
+" Map for NERDTree
+map <C-o> :NERDTreeToggle<CR>
+
+" Map , to fuzzyfiles finder
+map , :Files<CR>
 
 " Map Shift+F11 to append CW info to file
 nmap <S-F11> :call SetCopy()<CR>
@@ -249,6 +252,20 @@ endfunction
 " --- End of functions --- "
 
 " -------------------------------------------------------------------------------------------------------
+
+" lightline config
+let g:lightline = {
+  \     'active': {
+  \         'left': [['mode', 'paste' ], ['readonly', 'filename', 'modified']],
+  \         'right': [['lineinfo'], ['percent'], ['fileformat', 'fileencoding']]
+  \     }
+  \ }
+
+" Swap and backup options
+set nobackup
+set noswapfile
+set nowb
+set noundofile
 
 " Include Pathogen plugins
 call pathogen#infect()
